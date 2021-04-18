@@ -9,19 +9,12 @@
         </v-col>
       </v-row>
       <v-row class="text-center">
-        <v-col cols="12" xs=10, sm=6 md=6 lg=6 xl=6>
-          <a
-            v-bind:class="{
-              'base cb-released': !clicked,
-              'base cb-pushed': clicked,
-            }"
-            v-on:mousedown="mousedown('countup')"
-            v-on:mouseup="mouseup('countup')"
-            v-on:click="countup"
-            >count</a
-          >
+        <v-col cols="12" xs="10," sm="6" md="6" lg="6" xl="6">
+          <CountButton 
+            @click="countup"
+          />
         </v-col>
-        <v-col cols="12" xs=10, sm=6 md=6 lg=6 xl=6 >
+        <v-col cols="12" xs="10," sm="6" md="6" lg="6" xl="6">
           <a
             class="reset"
             v-bind:class="{
@@ -41,12 +34,22 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import CountButton from "../components/composition/CountButton.vue"
+
 // @ is an alias to /src
-@Component
+@Component({
+  components:{
+  'CountButton' : CountButton 
+  }
+})
 export default class Home extends Vue {
   private counter = 0;
   private clicked = false;
   private r_clicked = false;
+
+  check():void{
+    console.log("check")
+  }
 
   mousedown(target: string): void {
     if (target === "countup") this.clicked = true;
@@ -88,18 +91,6 @@ a.base {
   border-radius: 100vh;
 }
 
-a.cb-released {
-  background: #42b983;
-  color: #fcfcfc;
-  border-bottom: 5px solid #32a973;
-}
-
-a.cb-pushed {
-  background: #42b983;
-  color: #666666;
-  border-bottom: 2px solid #32a973;
-}
-
 a.rb-released {
   background: #fcfcfc;
   color: #666666;
@@ -120,9 +111,4 @@ a.counter-label {
 div.button-area {
   margin-top: 5px;
 }
-
-.border{
-  border: solid 2px;
-}
-
 </style>
