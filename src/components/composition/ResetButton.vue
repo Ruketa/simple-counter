@@ -22,8 +22,8 @@ import Label from "../component/Label.vue";
     Label: Label,
   },
 })
-export default class CountButton extends Vue {
-  private label = "count";
+export default class ResetButton extends Vue {
+  private label = "reset";
   private clicked = false;
 
   mousedown(): void {
@@ -33,7 +33,7 @@ export default class CountButton extends Vue {
 
   mouseup(): void {
     this.clicked = false;
-    this.$emit("mousedown");
+    this.$emit("mouseup");
   }
 }
 </script>
@@ -59,14 +59,14 @@ export default class CountButton extends Vue {
 }
 
 .released {
-  background: #42b983;
-  color: #fcfcfc;
-  border-bottom: 5px solid #32a973;
+  background: #fcfcfc;
+  color: #666666;
+  border-bottom: 5px solid #444444;
 }
 
 .pushed {
-  background: #42b983;
-  color: #666666;
-  border-bottom: 2px solid #32a973;
+  background: #fcfcfc;
+  color: #f0f0f0;
+  border-bottom: 2px solid #444444;
 }
 </style>
