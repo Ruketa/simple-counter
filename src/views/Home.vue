@@ -3,7 +3,7 @@
     <div class="home">
       <v-row justify="center" class="text-center">
         <v-col cols="12">
-          <CounterLabel :label="counter" />
+          <CounterLabel :label="count_number" />
         </v-col>
       </v-row>
       <v-row class="text-center">
@@ -23,6 +23,7 @@ import { Component, Vue } from "vue-property-decorator";
 import CountButton from "../components/composition/CountButton.vue";
 import ResetButton from "../components/composition/ResetButton.vue";
 import CounterLabel from "../components/composition/CounterLabel.vue";
+import { Counter } from "@/Domain/Counter";
 
 // @ is an alias to /src
 @Component({
@@ -33,14 +34,15 @@ import CounterLabel from "../components/composition/CounterLabel.vue";
   },
 })
 export default class Home extends Vue {
-  private counter = 0;
+  private count_number = 0;
+  private counter = new Counter();
 
   countup(): void {
-    this.counter++;
+    this.count_number = this.counter.countUp();
   }
 
   reset(): void {
-    this.counter = 0;
+    this.count_number = this.counter.reset();
   }
 }
 </script>
