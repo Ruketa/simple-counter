@@ -1,12 +1,12 @@
 <template>
   <v-container fluid>
-    <div class="home">
-      <v-row justify="center" class="text-center">
+    <div>
+      <v-row >
         <v-col cols="12">
           <CounterLabel :label="count_number" />
         </v-col>
       </v-row>
-      <v-row class="text-center">
+      <v-row >
         <v-col cols="12" xs="10," sm="6" md="6" lg="6" xl="6">
           <CountButton @click="countup" />
         </v-col>
@@ -25,7 +25,6 @@ import ResetButton from "../components/composition/ResetButton.vue";
 import CounterLabel from "../components/composition/CounterLabel.vue";
 import { Counter } from "@/Domain/Counter";
 
-// @ is an alias to /src
 @Component({
   components: {
     CountButton: CountButton,
@@ -48,7 +47,7 @@ export default class Home extends Vue {
 </script>
 
 <style scoped>
-div.button-area {
-  margin-top: 5px;
+.row{
+  text-align: center;
 }
 </style>
